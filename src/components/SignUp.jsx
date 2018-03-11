@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class SignUp extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+  
+  signUp () {
+    console.log('this.state', this.state);
+  }
+
   render () {
     return (
       <div className="form-inline">
@@ -10,15 +22,18 @@ class SignUp extends Component {
             className="form-control"
             type="text"
             placeholder="email"
+            onChange={(e) => this.setState({email: e.target.value})}
           />
           <input
             className="form-control"
             type="password"
             placeholder="password"
+            onChange={(e) => this.setState({password: e.target.value})}
           />
           <button
             className="btn btn-primary"
             type="button"
+            onClick={() => this.signUp()}
           >
             Sign Up
           </button>
