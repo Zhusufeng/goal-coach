@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { firebaseApp } from '../firebase';
 
 class SignIn extends Component {
   constructor (props) {
@@ -12,27 +13,42 @@ class SignIn extends Component {
     }
   }
 
+  signIn () {
+    console.log('signing in');
+    const {email, password} = this.state;
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        console.log('error', error);
+        this.setState({error});
+      })
+  }
 
   render () {
     return (
-      <div>
+      <div className="form-inline" style={{margin: '5%'}}>
         <h2>Sign In</h2>
-        <div>
-        <input
-          className=""
-          type="email"
-          placeholder="email" 
-          onChange={(e) => this.setState({email: e.target.value})}
-        />
-        <input
-          className=""
-          type="password"
-          placeholder="password" 
-          onChange={(e) => this.setState({password: e.target.value})}
-        />
-        <button>
-          Sign In
-        </button>
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="email"
+            style={{marginRight: '5px'}}
+            placeholder="email" 
+            onChange={(e) => this.setState({email: e.target.value})}
+          />
+          <input
+            className="form-control"
+            type="password"
+            style={{marginRight: '5px'}}
+            placeholder="password" 
+            onChange={(e) => this.setState({password: e.target.value})}
+          />
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={() => this.signIn()}
+          >
+            Sign In
+          </button>
         </div>
         <div>
           {this.state.error.message}
