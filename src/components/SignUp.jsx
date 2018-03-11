@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { firebaseApp } from '../firebase';
 
 class SignUp extends Component {
   constructor (props) {
@@ -8,9 +9,14 @@ class SignUp extends Component {
       password: ''
     }
   }
-  
+
   signUp () {
     console.log('this.state', this.state);
+    const {email, password} = this.state;
+    firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+      .catch(err => {
+        console.log('err', err);
+      })
   }
 
   render () {
