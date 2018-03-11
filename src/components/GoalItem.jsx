@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { completeGoalRef } from '../firebase';
 
 class GoalItem extends Component {
 
@@ -29,4 +31,11 @@ class GoalItem extends Component {
   }
 }
 
-export default GoalItem;
+function mapStateToProps(state) {
+  const { user } = state;
+  return {
+    user
+  };
+}
+
+export default connect(mapStateToProps, null)(GoalItem);
