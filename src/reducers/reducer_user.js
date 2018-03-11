@@ -2,7 +2,7 @@ import { SIGNED_IN } from '../constants';
 
 let user = {
   email: null
-}
+};
 
 export default (state = user, action) => {
   switch (action.type) {
@@ -13,4 +13,4 @@ export default (state = user, action) => {
     default:
       return state;
   }
-}
+};
