@@ -11,21 +11,33 @@ class CompleteGoalList extends Component {
         const {email, title} = completeGoal.val();
         completeGoals.push({email, title});
       });
-      console.log('completeGoals', completeGoals);
+      this.props.setCompleted(completeGoals);
     });
   }
 
   render () {
+    // console.log('this.props.completeGoals', this.props.completeGoals);
     return (
-      <div>Complete Goal List</div>
+      <div>
+        {
+          this.props.completeGoals.map((completeGoal, index) => {
+            const { title, email } = completeGoal;
+            return (
+              <div key={index}>
+                <strong>{title}</strong> completed by <em>{email}</em>
+              </div>
+            );
+          })
+        }
+      </div>
     );
   }
 }
 
 function mapStateToProps (state) {
-  const { completedGoals } = state;
+  const { completeGoals } = state;
   return {
-    completedGoals
+    completeGoals
   };
 }
 
