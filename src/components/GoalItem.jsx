@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { completeGoalRef } from '../firebase';
+import { completeGoalRef, goalRef } from '../firebase';
 
 class GoalItem extends Component {
 
   completeGoal () {
-    console.log()
-    // add to complete goals on the db
-    // remove this goal from the goals reference
+    // get logged in user from redux store
     const { email } = this.props.user;
-    const { title } = this.props.goal;
-    console.log('email', email, 'title', title);
+
+    // get title & serverKey from GoalList component
+    const { title, serverKey } = this.props.goal;
+
+    // remove key-val pair with serverKey from the goals key in the db
+    goalRef.child(serverKey).remove();
 
     // add completed goal to firebase db
     completeGoalRef.push({email, title});
