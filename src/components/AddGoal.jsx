@@ -18,7 +18,7 @@ class AddGoal extends Component {
       <div className="form-inline">
         <div className="form-group">
           <input
-            type="text"type
+            type="text"
             placeholder="Add a goal"
             className="form-control"
             style={{marginRight: '5px'}} 
