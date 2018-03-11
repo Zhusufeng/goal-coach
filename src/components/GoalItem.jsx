@@ -8,10 +8,16 @@ class GoalItem extends Component {
     console.log()
     // add to complete goals on the db
     // remove this goal from the goals reference
+    const { email } = this.props.user;
+    const { title } = this.props.goal;
+    console.log('email', email, 'title', title);
+
+    // add completed goal to firebase db
+    completeGoalRef.push({email, title});
   }
 
   render () {
-    console.log('this.props.goal', this.props.goal);
+    // console.log('this.props.goal', this.props.goal);
     const { email, title } = this.props.goal;
 
     return (
@@ -31,7 +37,7 @@ class GoalItem extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { user } = state;
   return {
     user
