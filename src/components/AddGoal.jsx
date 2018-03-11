@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { goalRef } from '../firebase';
 
 class AddGoal extends Component {
   constructor (props) {
@@ -10,6 +11,12 @@ class AddGoal extends Component {
 
   addGoal () {
     console.log('this.state', this.state);
+
+    // Add to database
+    goalRef.push({
+      email: 'test@test.com',
+      title: this.state.title
+    }); 
   }
 
 
