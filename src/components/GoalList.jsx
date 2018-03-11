@@ -3,11 +3,13 @@ import { goalRef } from '../firebase';
 
 class GoalList extends Component {
   componentDidMount () {
-    goalRef.on('value', snap => {
+    goalRef.on('value', snap => { // use listener when db changes
+      let goals = [];
       snap.forEach(goal => {
-        let goalObject = goal.val();
-        console.log('goalObject', goalObject);
+        const { email, title } = goal.val();
+        goals.push({email, title});
       })
+      console.log('goals', goals);
     })
   }
 
