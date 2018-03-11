@@ -14,7 +14,7 @@ class AddGoal extends Component {
     console.log('this', this);
 
     const { title } = this.state;
-    const { email } = this.props;
+    const { email } = this.props.user;
 
     // Add to database
     goalRef.push({email, title}); 
@@ -46,9 +46,9 @@ class AddGoal extends Component {
 }
 
 function mapStateToProps (state) {
-  const { email } = state; // grab email from store
+  const { user } = state; // grab email from store
   return {
-    email
+    user
   };
 }
 
