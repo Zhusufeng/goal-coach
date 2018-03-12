@@ -1,6 +1,8 @@
 {
   "name": "goal-coach",
   "version": "0.1.0",
+  "description": "Save tasks for everyone with an account using React, Redux, react-router & firebase via Udemy course. See README.",
+  "author": "Lisa Gee",
   "private": true,
   "dependencies": {
     "firebase": "^4.11.0",
